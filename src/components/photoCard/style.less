@@ -23,7 +23,10 @@
 }
 
 .photocard {
-  flex: 1 0 45%;
+  flex: 1 0 100%;
+  @media (min-width: @mobile-break) {
+    flex: 1 0 45%;
+  }
   padding: 1em;
   height: 45vh;
   background-size: cover !important;
