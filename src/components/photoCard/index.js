@@ -7,9 +7,8 @@ export default class PhotoCard extends Component {
     this.state = {
       height: props.exif.height,
       width: props.exif.width,
-      portfolioURL: props.exif.user.portfolio_url,
       profile: props.exif.links.html,
-      fullView: props.exif.urls.full,
+      fullView: props.exif.urls.regular,
       thumb: props.exif.urls.small,
       url: props.exif.links.html,
       author: props.exif.user.name,
@@ -55,9 +54,9 @@ export default class PhotoCard extends Component {
 
   render() {
     return (
-      <div>{ this.state.showModal ? this.renderModal() : null }
+      <div class={style.photocard}>{ this.state.showModal ? this.renderModal() : null }
       <a href="#" title="Click to see a bigger view" onclick={this.showModal.bind(this)}>
-      <div class={style.photocard2} style={{ background: `url(${this.state.thumb})`}}>
+      <div class={style.photocard__relative} style={{ background: `url(${this.state.fullView})`}}>
         <div class={style.photocard__details} onmouseout={this.toggleDetails} onmouseover={this.toggleDetails} style={this.state.showDetails ? { opacity: 1, transition: "0.3s all ease-in" } : { opacity: 0, transition: "0.3s all ease-out" }}>
           <a href={this.state.profile}> By {this.state.author}</a>
         </div>
