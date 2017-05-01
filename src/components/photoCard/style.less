@@ -14,16 +14,55 @@
   padding: 1em;
 }
 
-.hoverHidden {
+.photocard__details {
+  .flexTotalCenter;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   padding: 1em;
-  visibility: hidden;
+  background-color: rgba(0,0,0,0.6);
+  a {
+    color: white;
+    transition: 0.3s all;
+  }
+  a:hover {
+    color: #ffc293;
+  }
 }
 
-.hoverShown {
-  visibility: visible;
+.photo_modal {
+  .flexTotalCenter;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.photo_modal__close {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  font-size: 1em;
+  text-align: center;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 1em;
+  line-height: 1.1em;
+  padding: 0;
+  border: 0;
+  background-color: @red;
+  transition: .3s all;
+}
+
+.photo_modal__close:hover {
+  background-color: #c42727;
+}
+
+.photo_modal__img {
+  max-height: 90vh;
 }
