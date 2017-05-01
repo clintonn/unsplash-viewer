@@ -17,8 +17,8 @@ export default class App extends Component {
 				<Header />
 				<Router onChange={this.handleRoute}>
 					<Home path="/" />
-					{/* <Random path="/random" />
-					<Curated path="/curated" /> */}
+					<Random path="/random" />
+					<Curated path="/curated" />
 				</Router>
 			</div>
 		);

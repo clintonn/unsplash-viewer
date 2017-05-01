@@ -23,9 +23,12 @@ export default class PhotoCard extends Component {
   }
 
   showModal(e) {
-    e.preventDefault()
+    if (e.target.href) {
+      window.location.href = e.target.href
+    } else {
     document.addEventListener("keydown", this.handleKeydown)
     this.setState({...this.state, showModal: true})
+    }
   }
 
   handleKeydown(e) {
@@ -55,8 +58,8 @@ export default class PhotoCard extends Component {
   render() {
     return (
       <div class={style.photocard}>{ this.state.showModal ? this.renderModal() : null }
-      <a href="#" title="Click to see a bigger view" onclick={this.showModal.bind(this)}>
-      <div class={style.photocard__relative} style={{ background: `url(${this.state.fullView})`}}>
+      <a title="Click to see a bigger view" onclick={this.showModal.bind(this)}>
+      <div class={style.photocard__relative} style={{ background: `url(${this.state.fullView})`, "cursor": "pointer"}}>
         <div class={style.photocard__details} onmouseout={this.toggleDetails} onmouseover={this.toggleDetails} style={this.state.showDetails ? { opacity: 1, transition: "0.3s all ease-in" } : { opacity: 0, transition: "0.3s all ease-out" }}>
           <a href={this.state.profile}> By {this.state.author}</a>
         </div>

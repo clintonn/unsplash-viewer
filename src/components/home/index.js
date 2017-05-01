@@ -50,7 +50,14 @@ export default class Home extends Component {
 
 	async loadMore() {
 		this.setState({...this.state, loading: true})
-		let photos = await axiosClient.get(`photos/more`, {params: {page: this.state.page}})
+		let photos = await axiosClient.get(`photos/more`, {
+			params: {
+				endpoint: "photos",
+				queries: {
+					page: this.state.page,
+				}
+			}
+		})
 		this.setState({
 			...this.state,
 			photos: [...this.state.photos, ...photos.data],
