@@ -1,6 +1,8 @@
 import { h, Component } from 'preact';
 import style from './style.less';
 import axiosClient from '../../adapters/axios'
+import loading from './loading.svg'
+import PhotoCard from '../photocard'
 
 export default class Home extends Component {
 	constructor() {
@@ -15,17 +17,42 @@ export default class Home extends Component {
 	async getPhotos() {
 		this.setState({
 			...this.state,
-			flash: await axiosClient.get("photos/test")
+			loading: true,
+			flash: "Loading photos..."
 		})
+		// let photos = await axiosClient.get('photos/index')
+		// this.setState({
+		// 	...this.state,
+		// 	photos: [...this.state.photos, ...photos.data],
+		// 	loading: false
+		// })
 	}
 
 	componentDidMount() {
 		this.getPhotos()
 	}
 
-	render() {
+	loadingScreen() {
 		return (
-			<div class="container"><h4 class="center">Latest photos from Unsplash</h4>{ this.state.flash }</div>
+			<div class={style.loading_container} style={{ height: "35vh" }}><div class={style.loading} style={{background: `url(${loading})`}}></div></div>
+		)
+	}
+
+	renderCards() {
+		return this.state.photos.map(photo => {
+			return (<PhotoCard
+			exif={photo} />)
+		})
+	}
+
+	render() {
+		let loadingScreen = this.state.loading ? this.loadingScreen() : this.renderCards()
+		return (
+			<div class="container"><h4 class="center">Latest photos from Unsplash</h4>
+			<div class="row">
+				{ loadingScreen }
+			</div>
+		</div>
 		);
 	}
 }
