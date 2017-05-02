@@ -61,7 +61,7 @@ export default class PhotoCard extends Component {
       <a title="Click to see a bigger view" onclick={this.showModal.bind(this)}>
       <div class={style.photocard__relative} style={{ background: `url(${this.state.fullView})`, "cursor": "pointer"}}>
         <div class={style.photocard__details} onmouseout={this.toggleDetails} onmouseover={this.toggleDetails} style={this.state.showDetails ? { opacity: 1, transition: "0.3s all ease-in" } : { opacity: 0, transition: "0.3s all ease-out" }}>
-          <a href={this.state.profile + `?utm_source=splash.surge.sh&utm_medium=referral&utm_campaign=api-credit`}> By {this.state.author}</a>
+          <a href={this.state.profile + `?utm_source=unwave.surge.sh&utm_medium=referral&utm_campaign=api-credit`}> By {this.state.author}</a>
         </div>
         <img src={this.state.thumb} style={{visibility: "hidden"}}/>
       </div></a>
